@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introducción – Migración</title>
+  <meta name="description" content="Introducción del proyecto sobre migración" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#22c55e; --brand-2:#3b82f6; --card:#0b1220; --border:#1f2937;
+      --accent:#f59e0b; --danger:#ef4444;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1d 0%,#0f172a 60%,#0a0f1d 100%);color:var(--text);min-height:100vh}
+    a{color:var(--brand-2);text-decoration:none} a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(15,23,42,.8);border-bottom:1px solid var(--border);z-index:50}
+    .wrap{max-width:1100px;margin:auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 18px var(--brand)}
+    nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+    nav a{padding:8px 10px;border-radius:8px} nav a:hover{background:rgba(255,255,255,.04)}
+    .hero{padding:64px 0 32px;border-bottom:1px solid var(--border)}
+    .hero h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);max-width:70ch;margin:0}
+    section{padding:40px 0}
+    .card{background:linear-gradient(180deg,#0b1220 0%,#0e1628 100%);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 5px 20px rgba(0,0,0,.25)}
+    .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .lead{font-size:18px;color:#fafafa}
+    footer{padding:30px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand">Migración – Proyecto</div>
+    <nav>
+      <ul>
+        <li><a href="intro.html">Introducción</a></li>
+        <li><a href="experiencia.html">Experiencia</a></li>
+        <li><a href="entrevistas.html">Entrevistas</a></li>
+        <li><a href="contexto.html">Contexto y Datos</a></li>
+        <li><a href="ayuda.html">Ayuda</a></li>
+        <li><a href="comentarios.html">Comentarios</a></li>
+        <li><a href="fuentes.html">Fuentes</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="int-title">
+    <h1 id="int-title">Entrevistas: historias reales</h1>
+    <p class="muted">Resumen de vidas, dificultades, motivaciones y aprendizajes. Si deseas mantener el anonimato, usa iniciales.</p>
+
+    <div style="margin-top:12px">
+      <button class="btn" id="mostrarBtn">Mostrar entrevistas</button>
+    </div>
+
+    <div id="lista-entrevistas" class="grid cols-2" style="margin-top:16px"></div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Videos de entrevistas</h3>
+      <p class="muted">Ejemplos y canales con material relevante.</p>
+      <ul>
+        <li><strong>Canal principal:</strong> <a href="https://www.youtube.com/@MigracionRealidad" target="_blank" rel="noopener">Migración y Realidad (YouTube)</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script>
+  const entrevistas = [
+    {nombre:'A. (M.)', rol:'Migrante', resumen:'Se fue por trabajo y envía remesas', dificultades:'Documentación, contratos temporales', p1:'Sí, volvería si hay estabilidad', p2:'Cáritas'},
+    {nombre:'B. (J.)', rol:'Estudiante', resumen:'Estudió en España', dificultades:'Adaptación y vivienda', p1:'Sí, por la experiencia', p2:'ACNUR Ecuador'}
+  ];
+
+  document.getElementById('mostrarBtn').addEventListener('click', mostrarEntrevistas);
+
+  function mostrarEntrevistas(){
+    const cont = document.getElementById('lista-entrevistas');
+    cont.innerHTML = '';
+    entrevistas.forEach(e=>{
+      const art = document.createElement('article');
+      art.className = 'card';
+      art.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 style="margin:0">${e.nombre}</h3><span style="font-size:12px;color:var(--muted)">${e.rol}</span>
+      </div>
+      <p style="color:var(--muted)">${e.resumen}</p>
+      <p><strong>Dificultades/Motivación:</strong> ${e.dificultades}</p>
+      <ul>
+        <li><strong>¿Volverías a hacer lo mismo?</strong> ${e.p1}</li>
+        <li><strong>¿Organizaciones que conozcas que ayuden a migrantes?</strong> ${e.p2}</li>
+      </ul>`;
+      cont.appendChild(art);
+    });
+  }
+</script>
+
+</body>
+</html>

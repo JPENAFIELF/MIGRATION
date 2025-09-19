@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introducción – Migración</title>
+  <meta name="description" content="Introducción del proyecto sobre migración" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#22c55e; --brand-2:#3b82f6; --card:#0b1220; --border:#1f2937;
+      --accent:#f59e0b; --danger:#ef4444;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1d 0%,#0f172a 60%,#0a0f1d 100%);color:var(--text);min-height:100vh}
+    a{color:var(--brand-2);text-decoration:none} a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(15,23,42,.8);border-bottom:1px solid var(--border);z-index:50}
+    .wrap{max-width:1100px;margin:auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 18px var(--brand)}
+    nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+    nav a{padding:8px 10px;border-radius:8px} nav a:hover{background:rgba(255,255,255,.04)}
+    .hero{padding:64px 0 32px;border-bottom:1px solid var(--border)}
+    .hero h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);max-width:70ch;margin:0}
+    section{padding:40px 0}
+    .card{background:linear-gradient(180deg,#0b1220 0%,#0e1628 100%);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 5px 20px rgba(0,0,0,.25)}
+    .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .lead{font-size:18px;color:#fafafa}
+    footer{padding:30px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <nav><ul>
+      <li><a href="intro.html">Introducción</a></li>
+      <li><a href="experiencia.html">Experiencia</a></li>
+      <li><a href="entrevistas.html">Entrevistas</a></li>
+      <li><a href="contexto.html">Contexto y Datos</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+      <li><a href="comentarios.html">Comentarios</a></li>
+      <li><a href="fuentes.html">Fuentes</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="c-title">
+    <h1 id="c-title">Comentarios y testimonios</h1>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+      <form id="form-coment" class="card" onsubmit="guardarComentario(event)">
+        <label for="nombre" style="font-size:12px;color:var(--muted)">Tu nombre (opcional)</label>
+        <input id="nombre" name="nombre" placeholder="Escribe tu nombre" />
+        <label for="relato" style="font-size:12px;color:var(--muted);margin-top:8px">Comentario o historia</label>
+        <textarea id="relato" name="relato" rows="5" placeholder="Escribe aquí…" required></textarea>
+        <label for="pais" style="font-size:12px;color:var(--muted);margin-top:8px">País</label>
+        <input id="pais" name="pais" placeholder="Ecuador, EE. UU., España…" />
+        <div style="margin-top:10px">
+          <button class="btn" type="submit">Publicar</button>
+        </div>
+      </form>
+
+      <div class="card">
+        <h3>Publicaciones</h3>
+        <div id="lista-comentarios" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // comentarios de ejemplo (copia del original)
+  const comentariosEjemplo = [
+    {nombre:'María', relato:'Mi hermano se fue a España por estudios y le ha ido muy bien.', pais:'España'},
+    {nombre:'José', relato:'Migré a EE.UU. buscando trabajo y ahora puedo enviar remesas a mi familia.', pais:'EE. UU.'},
+    {nombre:'Ana', relato:'Mi familia y yo tuvimos que salir del país por seguridad, fue difícil pero aprendimos mucho.', pais:'Ecuador'}
+  ];
+
+  const listaComentarios = document.getElementById('lista-comentarios');
+  comentariosEjemplo.forEach(c=>{
+    const div = document.createElement('div');
+    div.className='comment';
+    div.innerHTML = `<strong>${c.nombre}</strong> (${c.pais}):<br>${c.relato}`;
+    listaComentarios.appendChild(div);
+  });
+
+  function guardarComentario(event) {
+    event.preventDefault();
+    const nombre = document.getElementById('nombre').value || 'Anónimo';
+    const relato = document.getElementById('relato').value;
+    const pais = document.getElementById('pais').value || 'Desconocido';
+    const div = document.createElement('div');
+    div.className = 'comment';
+    div.innerHTML = `<strong>${nombre}</strong> (${pais}):<br>${relato}`;
+    listaComentarios.prepend(div);
+    document.getElementById('form-coment').reset();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introducción – Migración</title>
+  <meta name="description" content="Introducción del proyecto sobre migración" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#22c55e; --brand-2:#3b82f6; --card:#0b1220; --border:#1f2937;
+      --accent:#f59e0b; --danger:#ef4444;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1d 0%,#0f172a 60%,#0a0f1d 100%);color:var(--text);min-height:100vh}
+    a{color:var(--brand-2);text-decoration:none} a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(15,23,42,.8);border-bottom:1px solid var(--border);z-index:50}
+    .wrap{max-width:1100px;margin:auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 18px var(--brand)}
+    nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+    nav a{padding:8px 10px;border-radius:8px} nav a:hover{background:rgba(255,255,255,.04)}
+    .hero{padding:64px 0 32px;border-bottom:1px solid var(--border)}
+    .hero h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);max-width:70ch;margin:0}
+    section{padding:40px 0}
+    .card{background:linear-gradient(180deg,#0b1220 0%,#0e1628 100%);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 5px 20px rgba(0,0,0,.25)}
+    .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .lead{font-size:18px;color:#fafafa}
+    footer{padding:30px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <nav><ul>
+      <li><a href="intro.html">Introducción</a></li>
+      <li><a href="experiencia.html">Experiencia</a></li>
+      <li><a href="entrevistas.html">Entrevistas</a></li>
+      <li><a href="contexto.html">Contexto y Datos</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+      <li><a href="comentarios.html">Comentarios</a></li>
+      <li><a href="fuentes.html">Fuentes</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="ctx-title">
+    <h1 id="ctx-title">Contexto y datos oficiales</h1>
+    <div class="grid cols-2" style="margin-top:12px">
+      <div class="card">
+        <h3>Definición y contexto</h3>
+        <p>La migración es el desplazamiento geográfico de individuos o grupos por causas económicas, sociales o políticas. En Ecuador, la migración ha sido un fenómeno constante que refleja desigualdades, búsqueda de oportunidades y conexiones familiares internacionales.</p>
+      </div>
+      <div class="card">
+        <h3>De dónde provienen los datos</h3>
+        <p class="muted">Las cifras provienen de fuentes oficiales (FLACSO, OIM, ACNUR, INEC) y se presentan de manera clara para facilitar comprensión y comparaciones.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:16px">Datos clave de migración ecuatoriana</h3>
+    <div class="grid cols-3" style="margin-top:8px">
+      <div class="stat"><div style="font-weight:800">2020–2024</div><div>Más de 374.000 detenciones de ecuatorianos en la frontera de EE. UU.</div><div class="muted">Fuente: FLACSO 2025</div></div>
+      <div class="stat"><div style="font-weight:800">103.185</div><div>Ecuatorianos cruzaron la selva del Darién (2022–2024).</div><div class="muted">Fuente: FLACSO 2025</div></div>
+      <div class="stat"><div style="font-weight:800">US$ 6.552 M</div><div>Remesas enviadas a Ecuador en 2024.</div><div class="muted">Fuente: BCE 2024</div></div>
+    </div>
+
+    <!-- Sustitución: PDF en vez del gráfico -->
+    <div class="card" style="margin-top:16px">
+      <h3>Informe oficial: Flujo migratorio</h3>
+      <iframe 
+        src="https://docs.google.com/gview?url=https://ecuador.iom.int/sites/g/files/tmzbdl776/files/documents/2024-08/flujo-migratorio-de-poblacion-ecuatoriana_0.pdf&embedded=true" 
+        width="100%" 
+        height="800px" 
+        frameborder="0">
+      </iframe>
+      <p class="muted" style="margin-top:8px">Fuente: OIM Ecuador, 2024</p>
+    </div>
+<div class="card" style="margin-top:16px">
+  <h2>Glosario de términos</h2>
+  <details>
+    <summary><strong>Remesas</strong></summary>
+    <p>Dinero que los migrantes envían a sus familias en el país de origen.</p>
+  </details>
+  <details>
+    <summary><strong>Movilidad humana</strong></summary>
+    <p>Desplazamiento de personas por migración, refugio o desplazamiento forzado.</p>
+  </details>
+  <details>
+    <summary><strong>ACNUR</strong></summary>
+    <p>Agencia de la ONU para los Refugiados, brinda protección y asistencia.</p>
+  </details>
+  <details>
+    <summary><strong>Visado humanitario</strong></summary>
+    <p>Documento que permite entrar y permanecer en un país por razones de protección.</p>
+  </details>
+</div>
+  </section>
+</main>
+</body>
+</html>
